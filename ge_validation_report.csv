@@ -1,0 +1,15 @@
+test_id,name,status,detail
+1,Unicite de trade_id,PASS,0 doublons trouves sur trade_id
+2,Colonnes obligatoires non nulles,PASS,NaN dans colonnes obligatoires : aucun
+3,settlement_date >= trade_date,PASS,0 lignes ou settlement_date < trade_date
+4,bid < ask,PASS,0 lignes ou bid >= ask
+5,"price dans fourchette [bid*0.995, ask*1.005]",PASS,0 lignes hors fourchette
+6,mid_price coherent avec (bid+ask)/2 (tolerance 1%),PASS,0 lignes avec ecart > 1%
+7,"asset_class dans {equity, bond, derivative, fx}",PASS,"Valeurs presentes : {'equity', 'derivative', 'bond', 'fx'}. Invalides : aucune"
+8,Pas de rating investissement (AAA/AA/A) + default_flag=1,PASS,0 contradictions trouvees
+9,notional_eur > 0,PASS,0 lignes avec notional_eur <= 0
+10,"country_risk dans [0, 100]",PASS,"0 lignes hors [0, 100]"
+11,Format ISIN valide (2 lettres + 10 alphanumeriques),PASS,0 ISIN invalides sur 8750 testes
+12,"volatility_30d dans [0.1, 200]",PASS,"0 lignes hors [0.1, 200]"
+13,Completude globale > 90%,PASS,Completude = 100.00% (0 NaN sur 210000 cellules)
+14,Absence de PII en clair,PASS,"PII en clair : aucune. Colonnes hashees presentes : ['counterparty_name_hash', 'trader_id_hash', 'counterparty_id_hash']"
